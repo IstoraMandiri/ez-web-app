@@ -13,8 +13,8 @@ EZWebApp.imageData =
     {w:180, h:180} #<link href="icons/apple-touch-icon-180x180.png" sizes="180x180" rel="apple-touch-icon">
   ]
   splash: [
-    {w:320, h:460, dw:320, dh:480, pd:1, o:"portrait"} # <link href="splash/apple-touch-startup-image-320x460.png" media="(device-width: 320px) and (device-height: 480px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
-    {w:480, h:320, dw:320, dh:480, pd:1, o:"landscape"} # <link href="splash/apple-touch-startup-image-480x320.png" media="(device-width: 320px) and (device-height: 480px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+    {w:320, h:460, dw:320, dh:480, pd:1, o:"portrait", show: true} # <link href="splash/apple-touch-startup-image-320x460.png" media="(device-width: 320px) and (device-height: 480px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
+    {w:480, h:320, dw:320, dh:480, pd:1, o:"landscape", show: true} # <link href="splash/apple-touch-startup-image-480x320.png" media="(device-width: 320px) and (device-height: 480px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
     {w:640, h:920, dw:320, dh:480, pd:2, o:"portrait"} # <link href="splash/apple-touch-startup-image-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
     {w:960, h:640, dw:320, dh:480, pd:2, o:"landscape"} # <link href="splash/apple-touch-startup-image-960x640.png" media="(device-width: 320px) and (device-height: 480px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
     {w:640, h:1096, dw:320, dh:568, pd:2, o:"portrait"} # <link href="splash/apple-touch-startup-image-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image">
@@ -81,12 +81,16 @@ if Meteor.isClient
   # always hook into and re-populate meta tags on change
   Meteor.startup ->
     $head = $('head')
-    # recompute whenever our images collection changes
-    # TODO debounce
-    Tracker.autorun ->
-      # TODO: appTitle
+
+    debounced = _.debounce ->
       $('.ez-web-app', $head).remove()
-      $head.append Blaze.toHTMLWithData(Template.EZWebAppMetaTags, {images: EZWebApp.imageData})
+      $head.append Blaze.toHTMLWithData(Template.EZWebAppMetaTags, {imageData: EZWebApp.imageData})
+    , 100
+    Tracker.autorun ->
+      # recompute whenever our collection changes
+      EZWebApp.collection.find().fetch()
+      debounced()
+
 
   # admin UI
   grabUrl = (imageType) ->
