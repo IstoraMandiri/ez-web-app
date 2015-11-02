@@ -1,0 +1,16 @@
+<head>
+  <title>EZ Web App Example</title>
+</head>
+
+<body>
+  <h1>Welcome to Meteor!</h1>
+
+  {{> hello}}
+</body>
+
+<template name="hello">
+  {{> EZWebApp}}
+  <hr>
+  <p>What gets added to head:</p>
+  <textarea style="width:100%;height:900px;font-family:monospace;">{{> EZWebAppMetaTags imageData=imageData}}</textarea>
+</template>
