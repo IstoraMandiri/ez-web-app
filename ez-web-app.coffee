@@ -10,6 +10,7 @@ EZWebApp.imageData =
     {w:120, h:120}
     {w:144, h:144}
     {w:152, h:152}
+    {w:167, h:167}
     {w:180, h:180}
   ]
   splash: [
