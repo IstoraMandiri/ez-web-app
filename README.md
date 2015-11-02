@@ -4,6 +4,12 @@
 
 ![hitchcott:ez-web-app](http://i.imgur.com/UbbsC5v.png)
 
+## Usage
+
+Just `meteor add hitchcott:ez-web-app` and add `{{> EZWebApp}}` to your admin UI
+
+TODO: Security
+
 * UI for uploading and convert images for
   * DONE: Web app icon
   * TODO: Splash page (nearly implemented but currently out of action)
