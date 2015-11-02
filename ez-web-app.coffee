@@ -101,9 +101,16 @@ if Meteor.isClient
     else
       return false
 
+  Template.EZWebAppMetaTags.helpers
+    imageData: EZWebApp.imageData
+    grabUrl: grabUrl
+
   Template.EZWebApp.helpers
     imageData: EZWebApp.imageData
     grabUrl: grabUrl
+    largestIconSize: ->
+      largest = EZWebApp.imageData.icon[EZWebApp.imageData.icon.length-1]
+      "#{largest.w}px x #{largest.h}px"
 
   Template.EZWebApp.events
     'change input': (e) ->
@@ -112,6 +119,3 @@ if Meteor.isClient
       EZWebApp.collection.remove thisFile._id
       EZWebApp.collection.insert thisFile
 
-  Template.EZWebAppMetaTags.helpers
-    imageData: EZWebApp.imageData
-    grabUrl: grabUrl

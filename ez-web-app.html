@@ -1,9 +1,9 @@
 <template name="EZWebApp">
-  <p>Placeholder</p>
   <div class="row">
     <div class="col-sm-12">
-      <label>Icon</label>
+      <label>Upload App Icon</label>
       <input type="file" accept="image/*" name='icon'>
+      <p class='small muted'>Please upload a {{largestIconSize}} image.</p>
       <hr>
       {{#each imageData.icon}}
         {{#if grabUrl 'icon'}}

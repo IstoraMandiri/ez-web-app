@@ -21,6 +21,7 @@ Package.onUse(function(api) {
 
   api.addFiles([
     'ez-web-app.html',
+    'ez-web-app.css',
     'ez-web-app.coffee'
   ])
 });
