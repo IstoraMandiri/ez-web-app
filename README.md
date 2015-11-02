@@ -5,11 +5,12 @@
 ![hitchcott:ez-web-app](http://i.imgur.com/UbbsC5v.png)
 
 * UI for uploading and convert images for
-  * Web app icon
-  * Splash page (currently out of action)
-  * Meta tag config (NOT YET IMPLEMENTED)
+  * DONE: Web app icon
+  * TODO: Splash page (nearly implemented but currently out of action)
+  * TODO: Favicon
+  * vNext: Meta tag config
 
-* Adds & Maintains the following meta tags:
+* Dynamically Adds & Maintains the following meta tags:
 
 ```
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,7 +21,6 @@
 <link href="icons/apple-touch-icon-XxY.png" sizes="XxY" rel="apple-touch-icon">
 <link href="splash/apple-touch-startup-image-XxY.png" media="(device-width: X) and (device-height: Y) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)" rel="apple-touch-startup-image">
 ```
-
 
 ## Lisence
 
