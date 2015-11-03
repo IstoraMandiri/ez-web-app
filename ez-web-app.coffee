@@ -78,9 +78,16 @@ EZWebApp.collection = new FS.Collection "EZWebApp",
       else
         console.log message
 
+if Meteor.isServer
+  Meteor.publish 'EZWebApp', -> EZWebApp.collection.find()
+
 if Meteor.isClient
   # always hook into and re-populate meta tags on change
+  # TODO only hook up client if they are on mobile
+  Meteor.subscribe 'EZWebApp'
+
   Meteor.startup ->
+
     $head = $('head')
 
     debounced = _.debounce ->

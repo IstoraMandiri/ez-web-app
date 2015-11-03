@@ -11,35 +11,13 @@
         {{/if}}
       {{/each}}
     </div>
-    <!-- <div class="col-sm-6">
-      <label>Splash</label>
-      <input type="file" accept="image/*" name='splash'>
-      <hr>
-      {{#each imageData.splash}}
-        {{#if show}}
-          {{#if grabUrl 'splash'}}
-            <img class='ez-web-app-splash-preview' src="{{grabUrl 'splash'}}">
-          {{/if}}
-        {{/if}}
-      {{/each}}
-    </div> -->
   </div>
 </template>
 
 <template name="EZWebAppMetaTags">
-  {{#if appTitle}}
-    <meta class='ez-web-app meta-general' name="apple-mobile-web-app-title" content="{{appTitle}}">
-  {{/if}}
-  <meta class='ez-web-app meta-general' name="apple-mobile-web-app-capable" content="yes">
-  <meta class='ez-web-app meta-general' name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta class='ez-web-app meta-general' name="viewport" content="initial-scale=1">
-  <meta class='ez-web-app meta-general' name="format-detection" content="telephone=no">
   {{#with imageData}}
     {{#each icon}}
       <link class='ez-web-app meta-icon' href="{{grabUrl 'icon'}}" sizes="{{w}}x{{h}}" rel="apple-touch-icon">
-    {{/each}}
-    {{#each splash}}
-      <link class='ez-web-app meta-splash' href="{{grabUrl 'splash'}}" media="(device-width: {{dw}}px) and (device-height: {{dh}}px) and (orientation: {{o}}) and (-webkit-min-device-pixel-ratio: {{pd}})" rel="apple-touch-startup-image">
     {{/each}}
   {{/with}}
 </template>
